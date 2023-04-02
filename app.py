@@ -1,33 +1,7 @@
 import psycopg2
 from flask import Flask
-# from flask_table import Table, Col
 app = Flask(__name__)
 
-# # declare the table.
-# class ItemTable(Table):
-#     first = Col('First')
-#     last = Col('Last')
-#     city = Col('City')
-#     name = Col('Name')
-#     number = Col('Number')
-
-# populate it with objects.
-# class Table(records):
-#     def __init__(self, first, last, city, name, number):
-#         # 
-#         self.first = first
-#         self.last = last
-#         self.city = city
-#         self.name = name
-#         self.number = number
-#         # 
-#         items = records.query.all()
-        
-#         # Populate the table
-#         table = ItemTable(items)
-
-#         # Print the html
-#         print(table.__html__())
 
 @app.route('/')
 def hello_world():
@@ -80,8 +54,15 @@ def selecting():
     cursor = conn.cursor()
     cursor.execute('''SELECT * FROM Basketball;''')
     records = cursor.fetchall()
-    # return render_template('table.html', data=records)
-    return render_template('table.html', data=records)
-    conn.commit()
     conn.close()
+    response_string=""
+    response_string+="<table>"
+    for player in records:
+        response_string+="<tr>"
+        for info in player:
+            response_string+="<td>{}</td>".format(info)
+        response_string+="</tr>"
+    response_string+="</tables>"
+    return response_string
+    
     
