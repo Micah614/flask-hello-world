@@ -3,6 +3,8 @@ from flask import Flask
 from flask_table import Table, Col
 app = Flask(__name__)
 
+
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
@@ -56,10 +58,36 @@ def selecting():
         SELECT * FROM Basketball;
         ''')
     records = cursor.fetchall()
-    for row in records:
-        print(row[0])
-
     
+    # declare the table.
+    class ItemTable(Table):
+        first = Col('First')
+        last = Col('Last')
+        city = Col('City')
+        name = Col('Name')
+        number = Col('Number')
+
+    # populate it with objects.
+    class Table(records):
+        def __init__(self, first, last, city, name, number):
+            # 
+            self.first = first
+            self.last = last
+            self.city = city
+            self.name = name
+            self.number = number
+            # 
+            items = records.query.all()
+
+            # Populate the table
+            table = ItemTable(items)
+
+            # Print the html
+            print(table.__html__())
+    
+    
+    # for row in records:
+    #     print(row[0])
     conn.commit()
     conn.close()
-    # return "Basketball Table Successfully Created!"
+    return "This is a comment."
