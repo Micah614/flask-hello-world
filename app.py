@@ -1,5 +1,6 @@
 import psycopg2
 from flask import Flask
+from flask_table import Table, Col
 app = Flask(__name__)
 
 @app.route('/')
@@ -56,12 +57,9 @@ def selecting():
         ''')
     records = cursor.fetchall()
     for row in records:
-        print(row)
-        # print(row[0])
-        # print(row[0])
-        # print(row[0])
-        # print()
+        print(row[0])
+
     
     conn.commit()
     conn.close()
-    return "Basketball Table Successfully Created!"
+    # return "Basketball Table Successfully Created!"
