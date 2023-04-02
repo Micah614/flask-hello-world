@@ -27,12 +27,21 @@ def creating():
         ''')
     conn.commit()
     conn.close()
-    return "Basketball Table Successfully Created."
+    return "Basketball Table Successfully Created!"
 
 
-# from flask import Flask
-# app = Flask(__name__)
-
-# @app.route('/')
-# def hello_world():
-#     return 'Hello, World!'
+@app.route('/db_insert')
+def inserting():
+    conn=psycopg2.connect("postgres://lab_10_cspb_3308_database_user:QyGIpeJXm5FAO3CqkdvykoTXfNpLFRL2@dpg-cgkaoqe4dad69r1ngi60-a/lab_10_cspb_3308_database")
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO Basketball (First, Last, City, Name, Number)
+        VALUES
+        ('Jayson', 'Tatum', 'Boston', 'Celtics', 0),
+        ('Stephen', 'Curry', 'San Francisco', 'Warriors', 30),
+        ('Nikola', 'Jokic', 'Denver', 'Nuggets', 15),
+        ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2);
+        ''')
+    conn.commit()
+    conn.close()
+    return "Basketball Table Successfully Populated!"
