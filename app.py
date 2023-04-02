@@ -2,17 +2,19 @@ import psycopg2
 from flask import Flask
 app = Flask(__name__)
 
-
+# Initial Hello World route
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
 
+# Route for testing the database connection
 @app.route('/db_test')
 def testing():
     conn=psycopg2.connect("postgres://lab_10_cspb_3308_database_user:QyGIpeJXm5FAO3CqkdvykoTXfNpLFRL2@dpg-cgkaoqe4dad69r1ngi60-a/lab_10_cspb_3308_database")
     conn.close()
     return "Database Connection Successful."
 
+# Route for creating the Basketball table
 @app.route('/db_create')
 def creating():
     conn=psycopg2.connect("postgres://lab_10_cspb_3308_database_user:QyGIpeJXm5FAO3CqkdvykoTXfNpLFRL2@dpg-cgkaoqe4dad69r1ngi60-a/lab_10_cspb_3308_database")
@@ -30,7 +32,7 @@ def creating():
     conn.close()
     return "Basketball Table Successfully Created!"
 
-
+# Route for inserting data into the Basketball table.
 @app.route('/db_insert')
 def inserting():
     conn=psycopg2.connect("postgres://lab_10_cspb_3308_database_user:QyGIpeJXm5FAO3CqkdvykoTXfNpLFRL2@dpg-cgkaoqe4dad69r1ngi60-a/lab_10_cspb_3308_database")
@@ -47,7 +49,7 @@ def inserting():
     conn.close()
     return "Basketball Table Successfully Populated!"
 
-
+# Route for selecting and rendering Basketball table data
 @app.route('/db_select')
 def selecting():
     conn=psycopg2.connect("postgres://lab_10_cspb_3308_database_user:QyGIpeJXm5FAO3CqkdvykoTXfNpLFRL2@dpg-cgkaoqe4dad69r1ngi60-a/lab_10_cspb_3308_database")
@@ -65,7 +67,7 @@ def selecting():
     response_string+="</tables>"
     return response_string
     
-
+# Route for dropping the Basketball table
 @app.route('/db_drop')
 def dropping():
     conn=psycopg2.connect("postgres://lab_10_cspb_3308_database_user:QyGIpeJXm5FAO3CqkdvykoTXfNpLFRL2@dpg-cgkaoqe4dad69r1ngi60-a/lab_10_cspb_3308_database")
