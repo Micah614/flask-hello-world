@@ -1,6 +1,6 @@
 import psycopg2
 from flask import Flask
-from flask_table import Table, Col
+# from flask_table import Table, Col
 app = Flask(__name__)
 
 # declare the table.
