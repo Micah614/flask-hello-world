@@ -3,13 +3,13 @@ from flask import Flask
 # from flask_table import Table, Col
 app = Flask(__name__)
 
-# declare the table.
-class ItemTable(Table):
-    first = Col('First')
-    last = Col('Last')
-    city = Col('City')
-    name = Col('Name')
-    number = Col('Number')
+# # declare the table.
+# class ItemTable(Table):
+#     first = Col('First')
+#     last = Col('Last')
+#     city = Col('City')
+#     name = Col('Name')
+#     number = Col('Number')
 
 # populate it with objects.
 # class Table(records):
