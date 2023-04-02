@@ -1,17 +1,23 @@
-{% extends "base.html" %}
-
-{% block content %}
-  <table id="table" class="">
-    <tbody>
-      {% for item in data %}
-        <tr>
-          <td>{{ item[0] }}</td>
-          <td>{{ item[1] }}</td>
-          <td>{{ item[2] }}</td>
-          <td>{{ item[3] }}</td>
-          <td>{{ item[4] }}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% endblock %}
+<!doctype html>
+<html>
+  <head>
+    <title>Show_Table</title>
+  </head>
+  <body>
+      <div class="table">
+            <table>
+                <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td>{{ item[0] }}</td>
+                            <td>{{ item[1] }}</td>
+                            <td>{{ item[2] }}</td>
+                            <td>{{ item[3] }}</td>
+                            <td>{{ item[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+          </table>
+      </div>
+  </body>
+</html>
